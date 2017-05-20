@@ -1,19 +1,25 @@
 package inventory.models;
 
-import java.io.Serializable;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Taxonomy implements Serializable {
+@Document
+public class Taxonomy {
 
-	private static final long serialVersionUID = 1L;
+	
 	@Id
-    private Long id;
+    private String id;
+	
+	protected String name;
+	
+	
 
 }

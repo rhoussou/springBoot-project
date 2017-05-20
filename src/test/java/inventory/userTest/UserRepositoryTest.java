@@ -1,11 +1,10 @@
 package inventory.userTest;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,14 +27,14 @@ public class UserRepositoryTest {
 	@Test
     public void testFindby() throws Exception {
 		User root = new User("cyrol","root","roland",
-				"Houssou", "cyrolpro@yahoo.fr", null, null,
+				"Houssou", "cyrolpro@yahoo.fr",true, new Date(),
 				Arrays.asList(
 	                    new Authority(AuthorityName.ROLE_ADMIN)       
 	            )
 		);
 		
 		User user = new User("user","user","John",
-				"Doe", "cyrolpro@yahoo.fr", null, null,
+				"Doe", "cyrolpro@yahoo.fr", true, new Date(),
 				Arrays.asList(
 	                    new Authority(AuthorityName.ROLE_USER)       
 	            )
@@ -45,12 +44,8 @@ public class UserRepositoryTest {
 		
 		this.userRepository.save(users);
 		
-		assertThat(userRepository.findByUsername("user"), is(user.getUsername()));
-		
-		assertThat(userRepository.findByUsername("user").getId()).isEqualTo(user.getId());
-        
-		
-    		
+		assertThat(userRepository.findByUsername("user").getUsername()).isEqualTo(user.getUsername());
+		    		
 	}
 
 }

@@ -1,22 +1,20 @@
 package inventory.security.model;
 
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import org.springframework.data.annotation.Id;
-
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
-
+@ToString
 public class Authority {
 
-    @Id
-    private Long id;
-    @NonNull
     private AuthorityName name;
 
 }
