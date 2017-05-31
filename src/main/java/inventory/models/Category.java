@@ -12,14 +12,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
-public class Taxonomy {
+public class Category {
 
 	
 	@Id
     private String id;
 	
 	protected String name;
-	
 	
 
 }

@@ -7,7 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import inventory.repository.UserRepository;
-import inventory.security.model.User;
+import inventory.security.domain.JwtUserFactory;
+import inventory.security.domain.User;
 
 /**
  * Created by Roland Houssou.

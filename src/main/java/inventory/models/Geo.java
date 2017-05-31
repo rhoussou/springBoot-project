@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Variant  {
-
-    private String name;
-    
-    private String image;
+public class Geo  {
+	
+	private Long longitude;
+	
+	private Long latitude;
 
 }

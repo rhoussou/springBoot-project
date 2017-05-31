@@ -6,7 +6,7 @@ package inventory.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
-import inventory.security.model.User;
+import inventory.security.domain.User;
 
 
 /**

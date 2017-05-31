@@ -15,8 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import inventory.security.service.JwtAuthenticationEntryPoint;
-import inventory.security.service.JwtAuthenticationTokenFilter;
+import inventory.security.domain.JwtAuthenticationEntryPoint;
+import inventory.security.domain.JwtAuthenticationTokenFilter;
 
 
 @Configuration

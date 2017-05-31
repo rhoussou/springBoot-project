@@ -1,13 +1,9 @@
-package inventory.security.service;
+package inventory.security.domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
-import inventory.security.model.Authority;
-import inventory.security.model.JwtUser;
-import inventory.security.model.User;
 
 
 public final class JwtUserFactory {

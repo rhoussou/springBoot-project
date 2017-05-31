@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import inventory.security.model.JwtUser;
-import inventory.security.service.JwtAuthenticationRequest;
-import inventory.security.service.JwtAuthenticationResponse;
+import inventory.security.domain.JwtAuthenticationRequest;
+import inventory.security.domain.JwtAuthenticationResponse;
+import inventory.security.domain.JwtUser;
 import inventory.security.utils.JwtTokenUtil;
 
 import javax.servlet.http.HttpServletRequest;

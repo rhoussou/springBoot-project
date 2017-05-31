@@ -8,7 +8,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import inventory.security.model.JwtUser;
+import inventory.security.domain.JwtUser;
 
 import java.io.Serializable;
 import java.util.Date;

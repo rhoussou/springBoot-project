@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import inventory.repository.UserRepository;
-import inventory.security.model.Authority;
-import inventory.security.model.AuthorityName;
-import inventory.security.model.User;
+import inventory.security.domain.Authority;
+import inventory.security.domain.AuthorityName;
+import inventory.security.domain.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

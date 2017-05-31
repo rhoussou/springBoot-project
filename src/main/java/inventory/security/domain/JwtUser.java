@@ -1,4 +1,4 @@
-package inventory.security.model;
+package inventory.security.domain;
 
 import java.util.Collection;
 import java.util.Date;

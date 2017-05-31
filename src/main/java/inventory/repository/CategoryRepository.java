@@ -2,8 +2,8 @@ package inventory.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
-import inventory.models.Taxonomy;
+import inventory.models.Category;
 
-public interface TaxonomyRepository extends MongoRepository<Taxonomy, String>, QueryDslPredicateExecutor<Taxonomy> {
+public interface CategoryRepository extends MongoRepository<Category, String>, QueryDslPredicateExecutor<Category> {
 
 }

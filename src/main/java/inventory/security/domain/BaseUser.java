@@ -1,4 +1,4 @@
-package inventory.security.model;
+package inventory.security.domain;
 
 import java.util.Date;
 import java.util.List;
@@ -7,7 +7,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -17,13 +16,12 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Document
-public class User  {
+public abstract class  BaseUser  {
 
 	@Id
     private String id;

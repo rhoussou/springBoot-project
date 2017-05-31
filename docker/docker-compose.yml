@@ -1,5 +1,5 @@
 version: '2'
-services:
+services:  
   mongodb:
     container_name: mongo_database
     build: mongodb

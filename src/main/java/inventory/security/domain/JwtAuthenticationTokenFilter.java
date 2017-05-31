@@ -1,4 +1,4 @@
-package inventory.security.service;
+package inventory.security.domain;
 
 import java.io.IOException;
 import javax.servlet.FilterChain;

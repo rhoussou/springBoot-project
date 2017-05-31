@@ -1,24 +1,30 @@
 package inventory.models;
 
-import java.io.Serializable;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import mongoDbConfig.CascadeSave;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product implements Serializable {
+@Document
+public class Product {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
-    
-    private Long id; 
+    private String id;
+	
+	@DBRef
+	@CascadeSave
+	@NonNull
+	private Category category;
+	
 
 }

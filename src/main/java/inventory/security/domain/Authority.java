@@ -1,4 +1,4 @@
-package inventory.security.model;
+package inventory.security.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

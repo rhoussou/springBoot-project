@@ -7,10 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Variant  {
+public class Adress  {
+	
+	private String city;
+	
+	private String zip;
 
-    private String name;
-    
-    private String image;
+	private String state;
+	
+	private String  suite;
+
 
 }
