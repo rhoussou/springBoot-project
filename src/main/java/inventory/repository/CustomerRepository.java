@@ -3,8 +3,8 @@
  */
 package inventory.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import inventory.models.Customer;
@@ -18,8 +18,10 @@ public interface CustomerRepository extends MongoRepository<Customer, String>, Q
 	
 	Customer findByUsername(String username);
 	
+	Customer findByEmail(String email);
+	
 	Customer findById(String id);
 	
-	List<Customer> findByLastname(String lastname);
+	Page<Customer> findByLastname(String lastname,Pageable pageable);
 	
 }

@@ -4,6 +4,8 @@ package inventory.models;
 import java.util.Date;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import inventory.domain.Adress;
 import inventory.security.domain.BaseUser;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -26,10 +28,10 @@ public class Customer extends BaseUser {
 	
 	private String phone;
     
-    private String website;
+    private String company;
     
     private Adress adress;
     
-    private Geo localisation;
-
+    private String gender;
+    
 }

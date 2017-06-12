@@ -1,9 +1,10 @@
 package inventory.services;
 
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import inventory.models.Customer;
 import inventory.repository.CustomerRepository;
 
@@ -12,7 +13,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
     private CustomerRepository customerRepository;
-
+	
 	@Override
 	public Customer getOneCustomer(String id) {
 		// TODO Auto-generated method stub
@@ -20,28 +21,35 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	@Override
-	public List<Customer> getAllCustomer() {
-		return this.customerRepository.findAll();
+	public Page<Customer> getAllCustomer(Pageable pageable) {
+		
+		return this.customerRepository.findAll(pageable);
+		
 	}
 
 	@Override
-	public List<Customer> getAllCustomerByLastname(String lastname) {
-		return this.customerRepository.findByLastname(lastname);
+	public Page<Customer> getAllCustomerByLastname(String lastname,Pageable pageable) {
+		return this.customerRepository.findByLastname(lastname,pageable);
 	}
 
 	@Override
-	public void addCustomer(Customer customer) {
-		this.customerRepository.save(customer);
+	public void addCustomer(Customer customer ) {
+		this.customerRepository.insert(customer);
 	}
 
 	@Override
 	public void updateCustomer(Customer customer) {
-		this.customerRepository.insert(customer);
+		this.customerRepository.save(customer);
 	}
 
 	@Override
 	public Customer getCustomerByUsername(String username) {
 		return this.customerRepository.findByUsername(username);
+	}
+
+	@Override
+	public Customer getCustomerByEmail(String email) {
+		return this.customerRepository.findByEmail(email);
 	}
 
 }

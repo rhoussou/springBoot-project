@@ -1,9 +1,10 @@
-package inventory.models;
+package inventory.domain;
 
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 
+import inventory.models.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

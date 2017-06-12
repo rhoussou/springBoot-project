@@ -1,18 +1,20 @@
 package inventory.services;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import inventory.models.Customer;
 
 public interface CustomerService {
 	
 	public Customer getOneCustomer(String id);
 	
-    public List<Customer> getAllCustomer();
+    public Page<Customer> getAllCustomer(Pageable pageable);
 	
 	public Customer getCustomerByUsername(String username);
 	
-	public List<Customer> getAllCustomerByLastname(String lastname);
+	public Customer getCustomerByEmail(String email);
+	
+	public Page<Customer> getAllCustomerByLastname(String lastname,Pageable pageable);
 	
 	public void addCustomer(Customer customer);
 	

@@ -1,4 +1,4 @@
-package inventory.models;
+package inventory.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +16,5 @@ public class Adress  {
 	private String state;
 	
 	private String  suite;
-
-
+	
 }
