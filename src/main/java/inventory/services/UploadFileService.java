@@ -1,11 +1,11 @@
 package inventory.services;
 
 import java.io.IOException;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 public interface UploadFileService {
 	
-	public String SingleFileUpload(MultipartFile uploadfile, String UPLOADED_FOLDER ) throws IOException;
+	public void SingleFileUpload(MultipartHttpServletRequest request, String id, String uploadpath ) throws IOException;
 
 }

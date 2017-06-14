@@ -4,19 +4,14 @@ import inventory.domain.ErrorResponse;
 import inventory.exception.CustomerException;
 import inventory.models.Customer;
 import inventory.services.CustomerService;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import inventory.services.UploadFileService;
 import java.io.IOException;
-import java.util.Iterator;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @CrossOrigin(origins = "*")
@@ -30,42 +25,34 @@ public class CustomerController {
 	@Autowired
     private CustomerService customerService;
 	
+	@Autowired
+    private UploadFileService uploadFileService;
+	
     @GetMapping
-    public Page<Customer> getCustomers(Pageable pageable){
+    public Page<Customer> getCustomers(Pageable pageable) {
         return customerService.getAllCustomer(pageable);
     }
 
-    @PutMapping
-    public void update(@RequestBody Customer customer){
+    @PutMapping("/{id}")
+    public void update(@RequestBody Customer customer, @PathVariable("id") String id) throws CustomerException {
+    	
+    	Customer alreadyExist = customerService.getCustomerByEmail(customer.getEmail());
+    	
+    	
+    	customer.setId(id);
+    	System.out.println("cooooooooooooooooooooooooooooooooooooooooooooooooo");
     	customerService.updateCustomer(customer);
     }
 
     @PostMapping
     public void insert(@RequestBody Customer customer) throws CustomerException {
-    	Customer alreadyExist = customerService.getCustomerByEmail(customer.getEmail());
     	
+    	Customer alreadyExist = customerService.getCustomerByEmail(customer.getEmail());
     	if (alreadyExist != null) {
-    		    throw new CustomerException("Invalid employee name requested");
+    		    throw new CustomerException("email already used");
         }
     	customerService.addCustomer(customer);
     }
-    
-    
-    /*
-    @PostMapping
-    public void insertData(@RequestBody CustomerModel model) throws CustomerException, IOException {
-    	Customer alreadyExist = customerService.getCustomerByEmail(model.getCustomer().getEmail());
-    	
-    	if (alreadyExist != null) {
-    		    throw new CustomerException("erreur de doublon");
-        }
-    	
-    	//String uploadfilename = uploadFileService.SingleFileUpload(model.getFile(), UPLOADED_FOLDER);
-    	
-    	customerService.addCustomer(model.getCustomer());
-    		
-    }
-    */
     
     
     @GetMapping("/{id}")
@@ -78,34 +65,19 @@ public class CustomerController {
         return customerService.getAllCustomerByLastname(lastname, pageable);
     }
     
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/", method = RequestMethod.POST)
     public void UploadFile(MultipartHttpServletRequest request) throws IOException {
-
-      Iterator<String> itr = request.getFileNames();
-      MultipartFile file = request.getFile(itr.next());
-      String fileName = file.getOriginalFilename();
-      File dir = new File(UPLOADED_FOLDER);
-      if (dir.isDirectory()) {
-        File serverFile = new File(dir, fileName);
-        BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-        stream.write(file.getBytes());
-        stream.close();
-      }
+    	uploadFileService.SingleFileUpload(request, "id", UPLOADED_FOLDER);
     }
     
     @ExceptionHandler(CustomerException.class)
     public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
 
         ErrorResponse error = new ErrorResponse();
-        
-        error.setErrorCode(HttpStatus.PRECONDITION_FAILED.value());
-
+        error.setErrorCode(HttpStatus.CONFLICT.value());
         error.setMessage(ex.getMessage());
-
         return new ResponseEntity<ErrorResponse>(error, HttpStatus.OK);
 
     }
     
-  
- 
 }
