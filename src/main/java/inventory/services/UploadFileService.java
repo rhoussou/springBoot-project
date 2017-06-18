@@ -6,6 +6,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public interface UploadFileService {
 	
-	public void SingleFileUpload(MultipartHttpServletRequest request, String id, String uploadpath ) throws IOException;
-
+	public void SingleFileUpload(MultipartHttpServletRequest request,String id, String uploadpath ) throws IOException;
+	
 }

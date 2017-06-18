@@ -35,12 +35,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     public void update(@RequestBody Customer customer, @PathVariable("id") String id) throws CustomerException {
-    	
-    	Customer alreadyExist = customerService.getCustomerByEmail(customer.getEmail());
-    	
-    	
     	customer.setId(id);
-    	System.out.println("cooooooooooooooooooooooooooooooooooooooooooooooooo");
     	customerService.updateCustomer(customer);
     }
 
@@ -65,9 +60,9 @@ public class CustomerController {
         return customerService.getAllCustomerByLastname(lastname, pageable);
     }
     
-    @RequestMapping(value = "/upload/", method = RequestMethod.POST)
-    public void UploadFile(MultipartHttpServletRequest request) throws IOException {
-    	uploadFileService.SingleFileUpload(request, "id", UPLOADED_FOLDER);
+    @PostMapping("/upload")
+    public void UploadFile(MultipartHttpServletRequest request,@RequestParam("id") String id) throws IOException {
+    	uploadFileService.SingleFileUpload(request,id, UPLOADED_FOLDER);
     }
     
     @ExceptionHandler(CustomerException.class)
